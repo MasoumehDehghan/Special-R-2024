@@ -1,0 +1,68 @@
+#code for remote sensing data 
+
+
+#importind data
+#each image start with "im".
+#im.import()
+#passive senssors
+radiation from son ,some part reflection 
+plants absorb red light so they reflect green, they use red for photostnthesis
+
+
+library(devtools)
+library(imageRy)
+library(terra)
+
+#all image start with "im"
+im.list()
+
+#First layer blue, second green,third red
+
+#band B2,...,B8 NIR
+b2<-im.import("sentinel.dolomites.b2.tif" )
+cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
+plot(b2, col=cl)
+b3 <- im.import("sentinel.dolomites.b3.tif") 
+plot(b3, col=cl)
+b4 <- im.import("sentinel.dolomites.b4.tif") 
+plot(b4, col=cl)
+#Imoprting the NIR band
+b8 <- im.import("sentinel.dolomites.b8.tif") 
+plot(b8, col=cl)
+
+#Multiframe
+par(mfro)w=c(2,2)
+plot(b2, col=cl)
+plot(b3, col=cl)
+plot(b4, col=cl)
+plot(b8, col=cl)
+
+#stack:diferrent layers
+stacksent <- c(b2, b3, b4, b8)
+
+#plotting one layer
+dev.off() # it closes devices
+plot(stacksent, col=cl)
+plot(stacksent[[4]], col=cl)
+cl <- colorRampPalette(c("dark blue", "blue", "light blue")) (100)
+par
+
+#invisible
+#near infread(NIR)
+
+#Multiframe
+plot(b2, col=cl)
+plot(b3, col=cl)
+plot(b4, col=cl)
+plot(b8, col=cl)
+
+
+#RGB(Red+Green+Blue)
+#RGB plotting
+dove,off()
+im.plotRGB(sentstak, r=3, g=3, b=1) #natural color image
+im.plotRGB(sentstak, r=4, g=3, b=2) #false color image
+
+
+
+
